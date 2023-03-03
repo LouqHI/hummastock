@@ -12,5 +12,11 @@
   },
   "dependencies": {
     "mongoose": "^7.0.0"
-  }
+  },
+  "name": "hummastock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LouqHI/hummastock.git",
+  "author": "ZenatiSarah <62511328+ZenatiSarah@users.noreply.github.com>",
+  "license": "MIT"
 }
