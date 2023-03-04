@@ -1,15 +1,4 @@
-import {Schema, model} from "mongoose"
-
-const ProduitSchema= new Schema({
-    nom:{
-        type:String
-    },
-    quantite:{
-        type: Number
-    },
-})
-
-export const Produit= model<any>('Produit',ProduitSchema);
+import Produit from '../../models/Produit.model';
 
 export default defineEventHandler(
     async (event)=>{
