@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/admin/Documents/hummaction%20Offi/hummastock/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
