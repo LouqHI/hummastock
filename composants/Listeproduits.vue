@@ -1,4 +1,11 @@
 <script>
+/**
+ * TO DO
+ *    - Faire le refactor de cette balise avec script setup
+ *    - Récupérer les produits sur /api/produits
+ *    - Afficher les produits
+ *    - Tester le responsive
+ */
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiMapMarker, mdiPencil, mdiPlusCircle } from "@mdi/js";
 
