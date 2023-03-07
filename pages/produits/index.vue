@@ -4,11 +4,11 @@
   </div>
 </template>
 <script>
-import ListeproduitsVue from "../composants/Listeproduits.vue";
+import ListeproduitsVue from "../../composants/Listeproduits.vue";
 
 export default {
   components: {
-    Listeproduits,
+    ListeproduitsVue,
   },
 };
 </script>

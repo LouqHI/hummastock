@@ -1,3 +1,26 @@
+<script>
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiMapMarker, mdiPencil, mdiPlusCircle } from "@mdi/js";
+
+export default {
+  components: {
+    SvgIcon,
+  },
+  data() {
+    return {
+      pathMap: mdiMapMarker,
+      pathPencil: mdiPencil,
+      pathPlus: mdiPlusCircle,
+    };
+  },
+  methods: {
+    ajouterProduit() {
+      return navigateTo("/produits/nouveau");
+    },
+  },
+};
+</script>
+
 <template>
   <v-container class="produits">
     <svg-icon
@@ -8,7 +31,7 @@
       class="add"
     ></svg-icon>
     <v-container class="container_cards">
-      <v-card elevation="1" v-for="produit in setProduits" class="cards">
+      <v-card elevation="1" v-for="produit in produits" class="cards">
         <v-container class="column-text">
           <v-card-title>NOM</v-card-title>
           <v-card-subtitle>Catégorie</v-card-subtitle>
@@ -44,28 +67,9 @@
 </template>
 
 
-<script>
-import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiMapMarker, mdiPencil, mdiPlusCircle } from "@mdi/js";
 
-export default {
-  components: {
-    SvgIcon,
-  },
-  data() {
-    return {
-      pathMap: mdiMapMarker,
-      pathPencil: mdiPencil,
-      pathPlus: mdiPlusCircle,
-    };
-  },
-  methods: {
-    ajouterProduit() {
-      return navigateTo("/ajouter");
-    },
-  },
-};
-</script>
+
+
 <style scoped>
 .v-container {
   width: 100%;

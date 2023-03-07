@@ -11,9 +11,14 @@
     "nuxt": "^3.2.3"
   },
   "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/font": "^7.1.96",
+    "@mdi/js": "^7.1.96",
     "h3": "^1.5.0",
     "mongoose": "^7.0.0",
-    "vue-icon": "^2.3.0"
+    "sass": "^1.58.3",
+    "vue-icon": "^2.3.0",
+    "vuetify": "^3.1.7"
   },
   "name": "hummastock",
   "version": "1.0.0",
