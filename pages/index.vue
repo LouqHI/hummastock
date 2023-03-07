@@ -1,4 +1,4 @@
-<script setup>
+<script>
 /**
  * TO DO
  *    - Créer les redirections : 
