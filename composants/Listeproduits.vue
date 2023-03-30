@@ -10,10 +10,11 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiMapMarker, mdiPencil, mdiPlusCircle } from "@mdi/js";
 
 export default {
+  name:"ListeproduitsVue",
   components: {
     SvgIcon,
   },
-  data() {
+  data:()=> {
     return {
       pathMap: mdiMapMarker,
       pathPencil: mdiPencil,
