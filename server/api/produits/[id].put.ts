@@ -1,13 +1,13 @@
 import Produit from "~~/server/models/Produit.model";
 
-// export default defineEventHandler(
-//     async (event)=>{
-//         const body = await readBody(event)
-//         const produit= Produit.updateOne({},{...body, _id: event.params.id})
-//         console.log(produit)
+export default defineEventHandler(
+    async (event)=>{
+        const body = await readBody(event)
+        const produit= Produit.updateOne()
+        console.log(produit)
 
-//     }
-// )
+    }
+)
 
 /**
  * 

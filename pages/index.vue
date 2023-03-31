@@ -7,13 +7,10 @@
  *            - laisser le template vide car cette page sert uniquement de point d'entrée + redirection
  */
 
-
+await navigateTo('/produits')
 </script>
 
 <template>
-  <div>
-    <h1>Page Home</h1>
-  </div>
 </template>
 
 
