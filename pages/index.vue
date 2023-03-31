@@ -1,4 +1,4 @@
-<script>
+<script setup>
 /**
  * TO DO
  *    - Créer les redirections : 
@@ -7,18 +7,12 @@
  *            - laisser le template vide car cette page sert uniquement de point d'entrée + redirection
  */
 
-import ListeproduitsVue from "../composants/Listeproduits.vue";
-// export default {
-//   components: {
-//     ListeproduitsVue,
-//   },
-// };
+
 </script>
 
 <template>
   <div>
     <h1>Page Home</h1>
-    <ListeproduitsVue />
   </div>
 </template>
 
