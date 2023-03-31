@@ -58,7 +58,7 @@ export default {
 </script>
 
 <template>
-    <v-container class="home_auth">
+    <!-- <v-container class="home_auth">
       <img class="img" src="../static/logo.png" />
   
       <v-form
@@ -94,7 +94,7 @@ export default {
           Connexion
         </v-btn>
       </v-form>
-    </v-container>
+    </v-container> -->
   </template>   
   
   <style scoped>
