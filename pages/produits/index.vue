@@ -2,6 +2,7 @@
 /**
  * TO DO
  *    - Tester le responsive
+ *    - Fixer le logo => lorsqu'on swipe, il reste en haut et c'est juste la liste qui swipe
  */
 
 const { data: produits } = await useFetch("/api/produits");
