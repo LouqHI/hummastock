@@ -10,7 +10,7 @@ const { data: produits } = await useFetch("/api/produits");
 
 <template>
   <v-container>
-    <div class="d-flex align-center justify-center mb-5">
+    <div class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
       <v-img
       max-width="150"
       aspect-ratio="1/1 "
@@ -20,8 +20,8 @@ const { data: produits } = await useFetch("/api/produits");
       ></v-img>
     </div>
     
-      <v-list>
-        <v-list-item v-for="produit in produits.produits" :key="produit.id">
+      <v-list class="liste">
+        <v-list-item v-for="produit in produits.produits" :key="produit.id" >
           <v-card class="mx-auto mb-4"  max-width="400">
             <v-container fluid class="pa-0">
               <v-row>
@@ -63,5 +63,16 @@ const { data: produits } = await useFetch("/api/produits");
 }
 .quantite-color-red{
   background-color: red;
+}
+.index{
+  z-index: 100;
+  background-color: white;
+  top: 0px;
+}
+.v-container{
+  padding: 0 !important;
+}
+.liste{
+  margin-top: 10rem;
 }
 </style>
