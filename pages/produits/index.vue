@@ -1,4 +1,5 @@
 <script setup>
+import Footer from '../../components/Footer.vue'
 /**
  * TO DO
  *    - Tester le responsive
@@ -44,8 +45,8 @@ const { data: produits } = await useFetch("/api/produits");
           
           </v-card>
         </v-list-item>
-      </v-list>
-      
+      </v-list>  
+      <Footer/>
   </v-container>
 </template>
 
