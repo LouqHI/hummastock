@@ -23,6 +23,14 @@ export default {
         'Blanc-Mesnil',
         'Bagnolet'
       ],
+      quantiteRule:[
+        v => !!v || 'La quantité est requise',
+        v => /^[0-9]+$/.test(v) || 'Veuillez entrer des chiffres entre 0-9',
+      ],
+      nomRule:[
+        v => !!v || 'Le nom est requis',
+        v => /^[a-zA-Z0-9\s'éèéÈÉ]+$/.test(v) || 'Les caractères spéciaux ne sont pas autorisés',
+      ]
     };
   },
   methods: {
@@ -66,7 +74,7 @@ export default {
 
     <v-sheet max-width="400" class="mx-auto">
       <form @submit.prevent="submit">
-    <v-text-field v-model="nom" label="Nom"></v-text-field>
+    <v-text-field v-model="nom" label="Nom" :rules="nomRule"></v-text-field>
     <v-select
         v-model="categorie"
         :items="items"
@@ -74,7 +82,7 @@ export default {
         required
       ></v-select>
 
-    <v-text-field v-model="quantite" label="Quantité"></v-text-field>
+    <v-text-field v-model="quantite" label="Quantité" :rules="quantiteRule"></v-text-field>
     <v-select
         v-model="lieu"
         :items="itemslieu"
