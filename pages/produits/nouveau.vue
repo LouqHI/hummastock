@@ -46,6 +46,7 @@ export default {
           date_creation: this.dateCreation,
         },
       });
+      return navigateTo('/produits')
     },
   },
 };
