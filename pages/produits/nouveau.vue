@@ -39,6 +39,11 @@ export default {
       const dateObj = moment(today).add(1, "day").format("LL");
       this.dateCreation = dateObj;
 
+      if(this.quantite || this.nom || this.lieu || this.categorie === ""){
+        alert("Veuillez remplir tous les champs")
+        return false
+      }
+
       await useFetch("http://localhost:3000/api/produits/create", {
         headers: {
           "Content-Type": "multipart/form-data",
