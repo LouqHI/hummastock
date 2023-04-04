@@ -1,4 +1,9 @@
 <script setup>
+/**
+ * TO FIX:
+ *  - utiliser une balise NuxtLink à la place d'une div
+ *  - utiliser le composant v-bottom-navigation à la place de la balise footer
+ */
 const addproduit = () => {
     return navigateTo('/produits/nouveau')
 }
