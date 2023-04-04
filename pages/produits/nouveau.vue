@@ -18,7 +18,7 @@ export default {
       const dateObj = moment(today).add(1, "day").format("LL");
       this.dateCreation = dateObj;
 
-      await useFetch("http://localhost:3000/api/produits/create", {
+      await useFetch("/api/produits/create", {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -32,7 +32,7 @@ export default {
           lieu_de_stockage: this.lieu,
           date_creation: this.dateCreation,
         },
-      });
+      }).then(navigateTo('/produits'));
     },
   },
 };

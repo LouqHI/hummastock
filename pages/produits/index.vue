@@ -4,27 +4,25 @@
  *    - Tester le responsive
  *    - Fixer le logo => lorsqu'on swipe, il reste en haut et c'est juste la liste qui swipe
  */
-
-const { data: produits } = await useFetch("/api/produits");
-//const objet = ()=>console.log(produits)
+const {data:produits}= await useFetch('/api/produits')
 </script>
+
 
 <template>
   <v-container>
     <div class="d-flex align-center justify-center mb-5">
       <v-img
-      max-width="150"
+      max-width="90"
       aspect-ratio="1/1 "
       cover
       src="/logo-prd.png"
       alt="Logo HUMMACTION"
       ></v-img>
     </div>
-    
-      <v-list>
-        <v-list-item v-for="produit in produits.produits" :key="produit.id">
-          <v-card class="mx-auto mb-4"  max-width="400">
-            <v-container fluid class="pa-0">
+    <v-list>
+        <v-list-item v-for="produit in produits" :key="produit.id">
+          <v-card class="mx-auto mb-4" color="grey-lighten-5" elevation="3">
+            <v-container  class="pa-0" >
               <v-row>
                 <v-col cols="9"  > 
                   <v-card-title>{{ produit.nom }}</v-card-title>
@@ -45,8 +43,7 @@ const { data: produits } = await useFetch("/api/produits");
           
           </v-card>
         </v-list-item>
-      </v-list>
-      
+      </v-list> 
   </v-container>
 </template>
 
@@ -66,3 +63,4 @@ const { data: produits } = await useFetch("/api/produits");
   background-color: red;
 }
 </style>
+
