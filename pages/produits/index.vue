@@ -10,7 +10,7 @@ const { data: produits } = await useFetch("/api/produits");
 </script>
 
 <template>
-  <v-container>
+  <v-container class="d-flex justify-center">
     <div class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
       <v-img
       max-width="150"
@@ -75,5 +75,6 @@ const { data: produits } = await useFetch("/api/produits");
 }
 .liste{
   margin-top: 10rem;
+  width: 100%;
 }
 </style>
