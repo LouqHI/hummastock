@@ -22,6 +22,7 @@ const { data: produits } = await useFetch("/api/produits");
     
       <v-list>
         <v-list-item v-for="produit in produits.produits" :key="produit.id">
+       
           <v-card class="mx-auto mb-4"  max-width="400">
             <v-container fluid class="pa-0">
               <v-row>
@@ -32,12 +33,27 @@ const { data: produits } = await useFetch("/api/produits");
                 </v-col>
                 <v-col cols="3"  v-if="produit.quantite > 3">
                   <v-card-text class="quantite-color-green">{{ produit.quantite }}</v-card-text>
+                  <v-card-text class="pen">
+                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                      <Icon name="material-symbols:edit-rounded"  />
+                  </NuxtLink>
+                </v-card-text>
                 </v-col>
                 <v-col cols="3" v-else-if="produit.quantite === 0">
                   <v-card-text class="quantite-color-red">{{ produit.quantite }}</v-card-text>
+                  <v-card-text class="pen">
+                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                      <Icon name="material-symbols:edit-rounded" />
+                  </NuxtLink>
+                </v-card-text>
                 </v-col>
                 <v-col cols="3" v-else="produit.quantite < 3">
                   <v-card-text class="quantite-color-orange">{{ produit.quantite }}</v-card-text>
+                  <v-card-text class="pen">
+                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                      <Icon name="material-symbols:edit-rounded" />
+                  </NuxtLink>
+                </v-card-text>
                 </v-col>
               </v-row>
             </v-container>
@@ -63,5 +79,9 @@ const { data: produits } = await useFetch("/api/produits");
 }
 .quantite-color-red{
   background-color: red;
+}
+.pen{
+  margin-top: 1rem;
+    text-align: center;
 }
 </style>
