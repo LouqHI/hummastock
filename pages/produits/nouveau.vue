@@ -39,6 +39,7 @@ export default {
 </script>
 
 <template>
+  
   <form @submit.prevent="submit">
     <v-text-field v-model="nom" label="Nom"></v-text-field>
 
