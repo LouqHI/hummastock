@@ -10,15 +10,6 @@ const {data:produits}= await useFetch('/api/produits')
 
 <template>
   <v-container>
-    <div class="d-flex align-center justify-center mb-5">
-      <v-img
-      max-width="90"
-      aspect-ratio="1/1 "
-      cover
-      src="/logo-prd.png"
-      alt="Logo HUMMACTION"
-      ></v-img>
-    </div>
     <v-list>
         <v-list-item v-for="produit in produits" :key="produit.id">
           <v-card class="mx-auto mb-4" color="grey-lighten-5" elevation="3">
