@@ -21,7 +21,7 @@ const { data: produits } = await useFetch("/api/produits");
     </div>
     
       <v-list>
-        <v-list-item v-for="produit in produits.produits" :key="produit.id">
+        <v-list-item v-for="produit in produits" :key="produit.id">
        
           <v-card class="mx-auto mb-4"  max-width="400">
             <v-container fluid class="pa-0">
