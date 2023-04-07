@@ -11,7 +11,7 @@ const {data:produits}= await useFetch('/api/produits')
 
 <template>
   <v-container class="d-flex justify-center">
-    <div class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
+    <NuxtLink to="/produits" class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
       <v-img
       max-width="80"
       aspect-ratio="1/1 "
@@ -19,7 +19,7 @@ const {data:produits}= await useFetch('/api/produits')
       src="/logo-prd.png"
       alt="Logo HUMMACTION"
       ></v-img>
-    </div>
+    </NuxtLink>
     
       <v-list class="liste">
         <v-list-item v-for="produit in produits" :key="produit.id" >
