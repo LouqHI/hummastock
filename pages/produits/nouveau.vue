@@ -1,4 +1,11 @@
 <script >
+/**
+ * TO DO:
+ *  - Disable le bouton tant que tout les champs ne sont pas validés
+ *  - Ne pas permettre d'ajouter les caractères spéciaux dans les champs mis à part l'apostrophe
+ *  - Quantité doit uniquement prendre des chiffres (type number)
+ *  
+*/
 import moment from "moment";
 import "moment/locale/fr";
 
