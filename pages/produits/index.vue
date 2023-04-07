@@ -1,4 +1,5 @@
 <script setup>
+import Footer from '../../components/Footer.vue'
 /**
  * TO DO
  *    - Tester le responsive
@@ -9,11 +10,21 @@ const {data:produits}= await useFetch('/api/produits')
 
 
 <template>
-  <v-container>
-    <v-list>
-        <v-list-item v-for="produit in produits" :key="produit.id">
-          <v-card class="mx-auto mb-4" color="grey-lighten-5" elevation="3">
-            <v-container  class="pa-0" >
+  <v-container class="d-flex justify-center">
+    <div class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
+      <v-img
+      max-width="80"
+      aspect-ratio="1/1 "
+      cover
+      src="/logo-prd.png"
+      alt="Logo HUMMACTION"
+      ></v-img>
+    </div>
+    
+      <v-list class="liste">
+        <v-list-item v-for="produit in produits" :key="produit.id" >
+          <v-card class="mx-auto mb-4"  max-width="400">
+            <v-container fluid class="pa-0">
               <v-row>
                 <v-col cols="9"  > 
                   <v-card-title>{{ produit.nom }}</v-card-title>
@@ -34,7 +45,8 @@ const {data:produits}= await useFetch('/api/produits')
           
           </v-card>
         </v-list-item>
-      </v-list> 
+      </v-list>  
+      <Footer/>
   </v-container>
 </template>
 
@@ -53,5 +65,16 @@ const {data:produits}= await useFetch('/api/produits')
 .quantite-color-red{
   background-color: red;
 }
+.index{
+  z-index: 100;
+  background-color: white;
+  top: 0px;
+}
+.v-container{
+  padding: 0 !important;
+}
+.liste{
+  margin-top: 10rem;
+  width: 100%;
+}
 </style>
-
