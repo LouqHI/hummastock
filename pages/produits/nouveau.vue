@@ -1,9 +1,6 @@
 <script >
 /**
  * TO DO:
- *  - Disable le bouton tant que tout les champs ne sont pas validés
- *  - Ne pas permettre d'ajouter les caractères spéciaux dans les champs mis à part l'apostrophe
- *  - Quantité doit uniquement prendre des chiffres (type number)
  *  - Center le formulaire sur la page
  *  
 */
@@ -13,6 +10,7 @@ import "moment/locale/fr";
 export default {
   data() {
     return {
+      valid:true,
       nom: "",
       categorie: "",
       quantite: null,
@@ -38,7 +36,7 @@ export default {
       ],
       nomRule:[
         v => !!v || 'Le nom est requis',
-        v => /^[a-zA-Z0-9\s'éèéÈÉ]+$/.test(v) || 'Les caractères spéciaux ne sont pas autorisés',
+        v => /^[^&!|()?{}"+=\\/_-]*$/.test(v) || 'Les caractères spéciaux ne sont pas autorisés',
       ]
     };
   },
@@ -48,9 +46,9 @@ export default {
       const dateObj = moment(today).add(1, "day").format("LL");
       this.dateCreation = dateObj;
 
-      if(this.quantite || this.nom || this.lieu || this.categorie === ""){
-        alert("Veuillez remplir tous les champs")
-        return false
+      if(!this.nomRule){
+        console.log("Veuillez entrer un nom valid")
+        return this.valid = false
       }
 
       await useFetch("/api/produits/create", {
@@ -75,10 +73,10 @@ export default {
 </script>
 
 <template>
-  <v-container style="height: 100vh; width: 100%; display: flex;">
+  <v-container style=" width: 100%; display: flex;">
     <v-sheet max-width="335" class="mx-auto sheetNew " >
-      <form @submit.prevent="submit" class="w-100">
-    <v-text-field v-model="nom" label="Nom" :rules="nomRule"></v-text-field>
+      <v-form @submit.prevent="submit" class="w-100" v-model="valid" >
+    <v-text-field v-model="nom" label="Nom" :rules="nomRule" type="text"></v-text-field>
     <v-select
         v-model="categorie"
         :items="items"
@@ -86,7 +84,7 @@ export default {
         required
       ></v-select>
 
-    <v-text-field v-model="quantite" label="Quantité" :rules="quantiteRule"></v-text-field>
+    <v-text-field v-model="quantite" label="Quantité" :rules="quantiteRule" type="number"></v-text-field>
     <v-select
         v-model="lieu"
         :items="itemslieu"
@@ -99,10 +97,10 @@ export default {
               Annuler 
           </NuxtLink> 
         </v-btn>
-          <v-btn class=" me-4" type="submit" @click="validate" color="success"> Créer un produit </v-btn>
+          <v-btn class=" me-4" type="submit" @click="validate" color="success" :disabled="!valid"> Créer </v-btn>
         </div>
     
-  </form>
+  </v-form>
     </v-sheet>
   </v-container>
   
