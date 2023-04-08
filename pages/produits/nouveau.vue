@@ -97,7 +97,7 @@ export default {
               Annuler 
           </NuxtLink> 
         </v-btn>
-          <v-btn class=" me-4" type="submit" @click="validate" color="success" :disabled="!valid"> Créer </v-btn>
+          <v-btn class=" me-4 btn" type="submit" @click="validate"  :disabled="!valid"> Créer </v-btn>
         </div>
     
   </v-form>
@@ -115,6 +115,10 @@ export default {
 }
 form{
   width: 100%;
+}
+.btn{
+  background-color: rgb(4, 42, 93);
+  color: white;
 }
 
 </style>

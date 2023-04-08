@@ -3,6 +3,7 @@
 export default {
   data() {
     return {
+      valid:true,
       nom: "",
       categorie: "",
       quantite: null,
@@ -21,11 +22,25 @@ export default {
         'Blanc-Mesnil',
         'Bagnolet'
       ],
+      
+      quantiteRule:[
+        v => !!v || 'La quantité est requise',
+        v => /^[0-9]+$/.test(v) || 'Veuillez entrer des chiffres entre 0-9',
+      ],
+      nomRule:[
+        v => !!v || 'Le nom est requis',
+        v => /^[^&!|()?{}"+=\\/_-]*$/.test(v) || 'Les caractères spéciaux ne sont pas autorisés',
+      ]
     };
   },
   methods: {
     async modification() {
       const route = useRoute();
+      if(!this.nomRule){
+        console.log("Veuillez entrer un nom valid")
+        return this.valid = false
+      }
+
       await useFetch(`/api/produits/${route.params.id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -53,9 +68,9 @@ const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
 
 <template>
   <v-container>
-    <v-sheet max-width="400" class="mx-auto sheet">
-      <form @submit.prevent="submit">
-    <v-text-field v-model="nom" :label="produit.nom"></v-text-field>
+    <v-sheet max-width="400" class="mx-auto sheet" >
+      <v-form @submit.prevent="submit"  v-model="valid">
+    <v-text-field v-model="nom" :label="produit.nom" :rules="nomRule" type="text"></v-text-field>
     <v-select
         v-model="categorie"
         :items="items"
@@ -63,7 +78,7 @@ const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
         required
       ></v-select>
 
-    <v-text-field v-model="quantite" :label="produit.quantite.toString()" ></v-text-field>
+    <v-text-field v-model="quantite" :label="produit.quantite.toString()" :rules="quantiteRule" type="number"></v-text-field>
     <v-select
         v-model="lieu"
         :items="itemslieu"
@@ -76,10 +91,10 @@ const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
               Annuler 
           </NuxtLink> 
         </v-btn>
-          <v-btn class=" me-4" type="submit" color="success" @click="modification"> Modifier </v-btn>
+          <v-btn class=" me-4 btn" type="submit"  @click="modification" :disabled="!valid"> Modifier </v-btn>
         </div>
     
-  </form>
+  </v-form>
     </v-sheet>
   </v-container>
   
@@ -88,5 +103,9 @@ const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
 <style>
 .sheet{
   margin-top: 5rem;
+}
+.btn{
+  background-color: rgb(4, 42, 93);
+  color: white;
 }
 </style>
