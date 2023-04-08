@@ -5,19 +5,27 @@
  *    - Fixer le logo => lorsqu'on swipe, il reste en haut et c'est juste la liste qui swipe
  */
 const {data:produits}= await useFetch('/api/produits')
+// console.log(produits)
+const itemsRecherche = produits.value.map((p) => p.nom)
+console.log(itemsRecherche)
 </script>
 
 
 <template>
   <div class="d-flex flex-column justify-center">
   <v-autocomplete
-    :items= "['Produit 1','Produit 2','Produit 3']"
-    label="Tapes ta recherche ici"
+    :items= "itemsRecherche"
+    item-text="nom"
+    label="Recherche ici"
+    icon="mdi-magnify"
     clearable
     variant="solo"
     fixed
     disabled
     >
+    <template #item="{item}"> 
+    <div><p>{{ item.nom}}</p></div> 
+  </template>
   </v-autocomplete>
   <v-container class="d-flex flex-column justify-center pa-0">
 
