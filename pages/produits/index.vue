@@ -13,20 +13,19 @@ console.log(itemsRecherche)
 
 <template>
   <div class="d-flex flex-column justify-center">
-  <v-autocomplete
+    <v-container fixed>
+      <v-autocomplete
     :items= "itemsRecherche"
-    item-text="nom"
+    item-text="itemsRecherche.title"
     label="Recherche ici"
     icon="mdi-magnify"
     clearable
     variant="solo"
     fixed
-    disabled
-    >
-    <template #item="{item}"> 
-    <div><p>{{ item.nom}}</p></div> 
-  </template>
-  </v-autocomplete>
+    >  </v-autocomplete>
+    </v-container>
+
+
   <v-container class="d-flex flex-column justify-center pa-0">
 
   <v-list class="liste mb-10">

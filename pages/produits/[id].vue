@@ -102,7 +102,7 @@ const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
 
 <style>
 .sheet{
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 .btn{
   background-color: rgb(4, 42, 93);
