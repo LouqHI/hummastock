@@ -1,70 +1,92 @@
-<script setup>
-    const route = useRoute();
+<script >
 
-    const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
-    console.log(produit)
-
-    function modification(){
-      
-        useFetch(`http://localhost:3000/api/produits/${route.params.id}`, {
+export default {
+  data() {
+    return {
+      nom: "",
+      categorie: "",
+      quantite: null,
+      lieu: "",
+      items: [
+        'Féculents',
+        'Légumes',
+        'Utilitaires',
+        'Boissons',
+        'Gâteaux',
+        'Viandes',
+        'Hygiène',
+        'Fruits'
+      ],
+      itemslieu:[
+        'Blanc-Mesnil',
+        'Bagnolet'
+      ],
+    };
+  },
+  methods: {
+    async modification() {
+      const route = useRoute();
+      await useFetch(`/api/produits/${route.params.id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
         method: "put",
         body: {
-          message: "PUT réussi",
+          message: "Produit modifié",
           nom: this.nom,
           categorie: this.categorie,
           statut: "true",
           quantite: this.quantite,
           lieu_de_stockage: this.lieu,
-          date_creation: this.dateCreation,
         },
       });
       return navigateTo('/produits')
-    
-    }
+    },
+  },
+};
+</script>
+
+<script setup>
+const route = useRoute();
+const { data: produit } = await useFetch(`/api/produits/${route.params.id}`);
 </script>
 
 <template>
-    <v-container>
-          <div class="d-flex align-center justify-center mb-5">
-        <v-img
-        max-width="150"
-        aspect-ratio="1/1 " 
-        cover
-        src="/logo-prd.png"
-        alt="Logo HUMMACTION"
-        ></v-img>
-      </div>
-  
-      <v-sheet max-width="400" class="mx-auto" v-for="item in produit" :key="produit._id">
-        
-        <form @submit.prevent="submit">
-            {{ item }}
+  <v-container>
+    <v-sheet max-width="400" class="mx-auto sheet">
+      <form @submit.prevent="submit">
+    <v-text-field v-model="nom" :label="produit.nom"></v-text-field>
+    <v-select
+        v-model="categorie"
+        :items="items"
+        :label="produit.categorie"
+        required
+      ></v-select>
 
-      <v-text-field v-model="nom" :label="item.nom" :rules="nomRule"></v-text-field>
-      <v-select
-          v-model="categorie"
-          :items="items"
-          :label="item.categorie"
-          required
-        ></v-select>
-  
-      <v-text-field v-model="quantite" :label="item.quantite" :rules="quantiteRule"></v-text-field>
-      <v-select
-          v-model="lieu"
-          :items="itemslieu"
-          :label="item.lieu_de_stockage"
-          required
-        ></v-select>
-          <div class="text-center">
-            <v-btn class=" me-4" type="submit" @click="modification" color="success"> submit </v-btn>
-          </div>
-      
-    </form>
-      </v-sheet>
-    </v-container>
+    <v-text-field v-model="quantite" :label="produit.quantite.toString()" ></v-text-field>
+    <v-select
+        v-model="lieu"
+        :items="itemslieu"
+        :label="produit.lieu_de_stockage"
+        required
+      ></v-select>
+        <div class="text-center">
+          <v-btn class=" me-4"  >
+            <NuxtLink to="/produits" style="text-decoration: none; color: black;">
+              Annuler 
+          </NuxtLink> 
+        </v-btn>
+          <v-btn class=" me-4" type="submit" color="success" @click="modification"> Modifier </v-btn>
+        </div>
     
-  </template>
+  </form>
+    </v-sheet>
+  </v-container>
+  
+</template>
 
+<style>
+.sheet{
+  margin-top: 5rem;
+}
+</style>

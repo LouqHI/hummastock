@@ -1,5 +1,4 @@
 <script setup>
-import Footer from '../../components/Footer.vue'
 /**
  * TO DO
  *    - Tester le responsive
@@ -10,59 +9,57 @@ const {data:produits}= await useFetch('/api/produits')
 
 
 <template>
-  <v-container class="d-flex justify-center">
-    <NuxtLink to="/produits" class="d-flex align-center justify-center mb-5 position-fixed background-white w-100  index">
-      <v-img
-      max-width="80"
-      aspect-ratio="1/1 "
-      cover
-      src="/logo-prd.png"
-      alt="Logo HUMMACTION"
-      ></v-img>
-    </NuxtLink>
-    
-      <v-list class="liste">
-        <v-list-item v-for="produit in produits" :key="produit.id" >
-          <v-card class="mx-auto mb-4"  max-width="400">
-            <v-container fluid class="pa-0">
-              <v-row>
-                <v-col cols="9"  > 
-                  <v-card-title>{{ produit.nom }}</v-card-title>
-                  <v-card-subtitle>{{ produit.categorie }}</v-card-subtitle>
-                  <v-card-text><Icon name="map:postal-code" /> {{ produit.lieu_de_stockage }}</v-card-text>
-                </v-col>
-                <v-col cols="3"  v-if="produit.quantite > 3">
-                  <v-card-text class="quantite-color-green">{{ produit.quantite }}</v-card-text>
-                  <v-card-text class="pen">
-                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
-                      <Icon name="material-symbols:edit-rounded"  />
-                  </NuxtLink>
-                </v-card-text>
-                </v-col>
-                <v-col cols="3" v-else-if="produit.quantite === 0">
-                  <v-card-text class="quantite-color-red">{{ produit.quantite }}</v-card-text>
-                  <v-card-text class="pen">
-                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
-                      <Icon name="material-symbols:edit-rounded" />
-                  </NuxtLink>
-                </v-card-text>
-                </v-col>
-                <v-col cols="3" v-else="produit.quantite < 3">
-                  <v-card-text class="quantite-color-orange">{{ produit.quantite }}</v-card-text>
-                  <v-card-text class="pen">
-                    <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
-                      <Icon name="material-symbols:edit-rounded" />
-                  </NuxtLink>
-                </v-card-text>
-                </v-col>
-              </v-row>
-            </v-container>
-          
-          </v-card>
-        </v-list-item>
-      </v-list>  
-      <Footer/>
+  <div class="d-flex flex-column justify-center">
+  <v-autocomplete
+    :items= "['Produit 1','Produit 2','Produit 3']"
+    label="Tapes ta recherche ici"
+    clearable
+    variant="solo"
+    fixed
+    disabled
+    >
+  </v-autocomplete>
+  <v-container class="d-flex flex-column justify-center pa-0">
+
+  <v-list class="liste mb-10">
+    <v-list-item v-for="produit in produits" :key="produit.id" >
+      <v-card class="mx-auto mb-4"  max-width="400">
+          <v-row>
+            <v-col cols="8"  > 
+              <v-card-title>{{ produit.nom }}</v-card-title>
+              <v-card-subtitle>{{ produit.categorie }}</v-card-subtitle>
+              <v-card-text><Icon name="map:postal-code" /> {{ produit.lieu_de_stockage }}</v-card-text>
+            </v-col>
+            <v-col cols="4"  v-if="produit.quantite > 3">
+              <v-card-text class="quantite-color-green">{{ produit.quantite }}</v-card-text>
+              <v-card-text class="pen">
+                <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                  <Icon name="material-symbols:edit-rounded"  />
+              </NuxtLink>
+            </v-card-text>
+            </v-col>
+            <v-col cols="4" v-else-if="produit.quantite === 0">
+              <v-card-text class="quantite-color-red">{{ produit.quantite }}</v-card-text>
+              <v-card-text class="pen">
+                <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                  <Icon name="material-symbols:edit-rounded" />
+              </NuxtLink>
+            </v-card-text>
+            </v-col>
+            <v-col cols="4" v-else="produit.quantite < 3">
+              <v-card-text class="quantite-color-orange">{{ produit.quantite }}</v-card-text>
+              <v-card-text class="pen">
+                <NuxtLink :to="'/produits/'+ produit._id " style="color: black;">
+                  <Icon name="material-symbols:edit-rounded" />
+              </NuxtLink>
+            </v-card-text>
+            </v-col>
+          </v-row>
+      </v-card>
+    </v-list-item>
+  </v-list>  
   </v-container>
+  </div>
 </template>
 
 <style>
@@ -80,16 +77,16 @@ const {data:produits}= await useFetch('/api/produits')
 .quantite-color-red{
   background-color: red;
 }
-.index{
+/* .index{
   z-index: 100;
   background-color: white;
   top: 0px;
-}
-.v-container{
+} */
+/* .v-container{
   padding: 0 !important;
-}
+} */
 .liste{
-  margin-top: 10rem;
+  /* margin-top: 5rem; */
   width: 100%;
 }
 

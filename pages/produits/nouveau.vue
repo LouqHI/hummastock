@@ -15,7 +15,7 @@ export default {
     return {
       nom: "",
       categorie: "",
-      quantite: "",
+      quantite: null,
       lieu: "",
       dateCreation: "",
       items: [
@@ -25,7 +25,8 @@ export default {
         'Boissons',
         'Gâteaux',
         'Viandes',
-        'Hygiène'
+        'Hygiène',
+        'Fruits'
       ],
       itemslieu:[
         'Blanc-Mesnil',
@@ -74,19 +75,9 @@ export default {
 </script>
 
 <template>
-  <v-container>
-        <div class="d-flex align-center justify-center mb-5">
-      <v-img
-      max-width="150"
-      aspect-ratio="1/1 " 
-      cover
-      src="/logo-prd.png"
-      alt="Logo HUMMACTION"
-      ></v-img>
-    </div>
-
-    <v-sheet max-width="400" class="mx-auto">
-      <form @submit.prevent="submit">
+  <v-container style="height: 100vh; width: 100%; display: flex;">
+    <v-sheet max-width="335" class="mx-auto sheetNew " >
+      <form @submit.prevent="submit" class="w-100">
     <v-text-field v-model="nom" label="Nom" :rules="nomRule"></v-text-field>
     <v-select
         v-model="categorie"
@@ -103,7 +94,12 @@ export default {
         required
       ></v-select>
         <div class="text-center">
-          <v-btn class=" me-4" type="submit" @click="validate" color="success"> submit </v-btn>
+          <v-btn class=" me-4"  >
+            <NuxtLink to="/produits" style="text-decoration: none; color: black;">
+              Annuler 
+          </NuxtLink> 
+        </v-btn>
+          <v-btn class=" me-4" type="submit" @click="validate" color="success"> Créer un produit </v-btn>
         </div>
     
   </form>
@@ -112,4 +108,16 @@ export default {
   
 </template>
 
-<style></style>
+<style>
+.sheetNew{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+form{
+  width: 100%;
+}
+
+</style>
+
