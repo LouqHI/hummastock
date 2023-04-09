@@ -22,6 +22,7 @@ console.log(itemsRecherche)
     clearable
     variant="solo"
     fixed
+    disabled
     >  </v-autocomplete>
     </v-container>
 
